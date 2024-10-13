@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Variables (Replace with your GitHub username and email)
-GITHUB_USER="your-github-username"
-REPO_NAME="test-ytliteplus"
+GITHUB_USER="YTLitePlus"
+REPO_NAME="ytliteplus.github.io"
 
 # Create a new local git repository
 git init
