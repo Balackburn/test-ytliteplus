@@ -2,5 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: '/test-ytliteplus/', // base URL for GitHub Pages
-  plugins: [],
+  build: {
+    outDir: 'dist'
+  }
 })
