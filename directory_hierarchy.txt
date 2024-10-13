@@ -1,0 +1,27 @@
+/Users/allantalbot/Downloads/ytliteplus.github.io-main 4
+├── LICENSE.md
+├── index.html
+├── LICENSE
+├── bun.lockb
+├── tailwind.config.ts
+├── public
+│   ├── AltStore.png
+│   ├── Screenshot-8.png
+│   ├── Screenshot-9.png
+│   ├── Screenshot-4.png
+│   ├── Screenshot-5.png
+│   ├── Screenshot-7.png
+│   ├── Screenshot-6.png
+│   ├── Logo.png
+│   ├── Screenshot-2.png
+│   ├── Screenshot-3.png
+│   └── Screenshot-1.png
+├── package.json
+├── directory_hierarchy.txt
+├── ds.py
+├── tsconfig.json
+├── postcss.config.js
+└── src
+    ├── main.ts
+    ├── vite-env.d.ts
+    └── style.css
