@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Variables (Replace these with your GitHub username and email)
+# Variables (Replace with your GitHub username and email)
 GITHUB_USER="your-github-username"
 REPO_NAME="test-ytliteplus"
 
@@ -16,13 +16,15 @@ git commit -m "Initial commit for Vite project"
 # Create a new repository on GitHub using gh CLI
 gh repo create $REPO_NAME --public --source=. --remote=origin --push
 
-# Add vite.config.js file for proper GitHub Pages setup
-cat <<EOT >> vite.config.ts
+# Add vite.config.ts file for proper GitHub Pages setup
+cat <<EOT > vite.config.ts
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: '/$REPO_NAME/', // base URL for GitHub Pages
-  plugins: [],
+  build: {
+    outDir: 'dist'
+  }
 })
 EOT
 
@@ -33,16 +35,22 @@ git commit -m "Added Vite config for GitHub Pages"
 # Push the updated files
 git push origin main
 
-# Set up GitHub Pages for the repository
-gh repo edit --add-topic github-pages
-gh pages set-up --branch=main --dist=dist
-
-# Build the project (vite or bun depending on your preference)
+# Install dependencies and build the project (using npm)
 npm install
 npm run build
 
-# Deploy to GitHub Pages
-gh pages deploy --source dist --branch=gh-pages --message "Deployed to GitHub Pages"
+# Create and push the `gh-pages` branch
+git checkout -b gh-pages
+git add -f dist
+git commit -m "Deploy to GitHub Pages"
+git subtree push --prefix dist origin gh-pages
+
+# Return to main branch
+git checkout main
+
+# Set up GitHub Pages to use the `gh-pages` branch
+gh repo edit --add-topic github-pages
+gh pages set-up --branch=gh-pages --dist=dist
 
 # Success message
-echo "Project has been created, pushed to GitHub, and deployed to GitHub Pages!"
+echo "Vite project has been created, pushed to GitHub, and deployed to GitHub Pages!"
